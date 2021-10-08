@@ -1,0 +1,28 @@
+.header {
+  @apply text-gray-400 bg-gray-900 border-b border-gray-700;
+}
+
+.ctr {
+  @apply container flex flex-col flex-wrap items-center md:flex-row;
+  @apply p-5 mx-auto xl:w-2/3;
+}
+
+.logo-wrapper {
+  @apply flex items-center mb-4 text-white font-display md:mb-0;
+}
+
+.logo {
+  @apply w-12 h-12;
+}
+
+.logo-name {
+  @apply ml-3 text-xl leading-tight text-left uppercase;
+}
+
+.nav {
+  @apply flex flex-wrap justify-center items-center text-base md:ml-auto;
+}
+
+.nav-link {
+  @apply mr-5 hover:text-white last:mr-0;
+}

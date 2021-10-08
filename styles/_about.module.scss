@@ -1,0 +1,23 @@
+.bar {
+  @apply mt-2 mb-4 w-20 h-1 bg-green-500 rounded;
+}
+
+.ctr {
+  @apply container flex flex-col md:flex-row;
+  @apply py-16 px-5 mx-auto text-gray-600 md:py-20 lg:py-24 xl:w-4/6;
+}
+
+.desc {
+  @apply self-center pt-8 md:pt-0 md:pl-8;
+  @apply text-lg font-medium leading-relaxed text-center md:text-justify;
+  @apply border-t border-gray-200 md:border-l md:border-t-0;
+}
+
+.heading {
+  @apply mt-4 text-gray-900 font-display;
+  @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
+}
+
+.wrapper {
+  @apply flex flex-col justify-center items-center text-center md:pr-8 md:py-8;
+}

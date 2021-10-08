@@ -1,0 +1,43 @@
+.slide-track {
+  animation: scroll 12s ease-in-out infinite;
+  display: flex;
+  width: 1200px;
+
+  svg {
+    flex-shrink: 0;
+    max-width: 300px;
+  }
+}
+
+.slider {
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  width: 300px;
+}
+
+@keyframes scroll {
+  0%,
+  22% {
+    transform: translateX(0%);
+  }
+
+  25%,
+  47% {
+    transform: translateX(-25%);
+  }
+
+  50%,
+  72% {
+    transform: translateX(-50%);
+  }
+
+  75%,
+  97% {
+    transform: translateX(-75%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}

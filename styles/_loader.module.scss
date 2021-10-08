@@ -1,0 +1,30 @@
+.loader {
+  @apply mx-auto mt-2 text-center;
+}
+
+.zoom1,
+.zoom2,
+.zoom3 {
+  @apply inline-block w-4 h-4 bg-gray-900 rounded-full;
+  animation: zoom 1.4s infinite ease-in-out both;
+}
+
+.zoom1 {
+  animation-delay: -0.32s;
+}
+
+.zoom2 {
+  animation-delay: -0.16s;
+}
+
+@keyframes zoom {
+  0%,
+  80%,
+  100% {
+    transform: scale(0);
+  }
+
+  40% {
+    transform: scale(1);
+  }
+}
