@@ -1,4 +1,5 @@
-import Link from 'next/link';
+
+// import Link from 'next/link';
 
 import OpenSource from '@assets/open_source.svg';
 
@@ -15,12 +16,12 @@ const Hero: React.FC = () => (
           Society of IIIT&nbsp;Kota
         </p>
         <div cx="btn-wrapper">
-          <Link href="#about-us">
+          <a href="#about-us">
             <a cx="btn-primary">Discover More</a>
-          </Link>
-          <Link href="#contact-us">
+          </a>
+          <a href="#contact-us">
             <a cx="btn-secondary">Join the Team</a>
-          </Link>
+          </a>
         </div>
       </div>
       <div cx="wrapper-right">
