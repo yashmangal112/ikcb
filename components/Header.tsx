@@ -1,6 +1,6 @@
-import Link from 'next/link';
 
 import Logo from '@assets/logo.svg';
+import Link from 'next/link';
 
 const Header: React.FC = () => (
   <header cx="header">
@@ -22,13 +22,13 @@ const Header: React.FC = () => (
 
       <nav cx="nav">
         <Link href="#about-us">
-          <a cx="nav-link">About Us</a>
+          About Us
         </Link>
         <Link href="#our-team">
-          <a cx="nav-link">Our Team</a>
+          Our Team
         </Link>
         <Link href="#contact-us">
-          <a cx="nav-link">Contact Us</a>
+          Contact Us
         </Link>
       </nav>
     </div>

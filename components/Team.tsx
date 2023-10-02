@@ -1,6 +1,7 @@
 import Image from 'next/image';
 
 const teamMembers = [
+  { name: 'Yash Mangal', github: 'yashmangal112' },
   { name: 'Achalesh Lakhotiya', github: 'achalesh27022003' },
   { name: 'Akash Tureha', github: 'MrMischievousX' },
   { name: 'Akshat Saxena', github: 'akshatsaxena1701' },

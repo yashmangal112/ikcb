@@ -1,5 +1,5 @@
 const Preload: React.FC<{ font: string }> = ({ font }) => (
-  <link
+  <a
     as="font"
     crossOrigin="anonymous"
     href={`/fonts/${font}.woff2`}

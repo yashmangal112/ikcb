@@ -15,7 +15,7 @@ const hashOnlyIdent = (context, _, exportName) =>
     )
     .replace(/^(-?\d|--)/, '_$1');
 
-/** @type {import('next').NextConfig} */
+
 module.exports = {
   experimental: { esmExternals: 'loose' },
   i18n: { locales: ['en-US'], defaultLocale: 'en-US' },
@@ -24,37 +24,42 @@ module.exports = {
   reactStrictMode: true,
 
   webpack(config, { isServer }) {
-    const rules = config.module.rules
-      .find((rule) => typeof rule.oneOf === 'object')
-      .oneOf.filter((rule) => Array.isArray(rule.use));
+    const oneOfRule = config.module.rules.find((rule) => typeof rule.oneOf === 'object');
+    if (oneOfRule) {
+      const rules = oneOfRule.oneOf.filter((rule) => Array.isArray(rule.use));
 
-    rules.forEach((rule) => {
-      rule.use.forEach((moduleLoader) => {
-        if (
-          moduleLoader.loader.includes('css-loader') &&
-          !moduleLoader.loader.includes('postcss-loader')
-        ) {
-          moduleLoader.options.modules.getLocalIdent = hashOnlyIdent;
+      rules.forEach((rule) => {
+        if (Array.isArray(rule.use)) {
+          rule.use.forEach((moduleLoader) => {
+            if (moduleLoader.loader && moduleLoader.loader.includes('css-loader') && !moduleLoader.loader.includes('postcss-loader')) {
+              if (moduleLoader.options && moduleLoader.options.modules) {
+                moduleLoader.options.modules.getLocalIdent = hashOnlyIdent;
+              }
+            }
+      
+            if (moduleLoader.loader && moduleLoader.loader.includes('resolve-url-loader')) {
+              if (moduleLoader.options) {
+                moduleLoader.options.sourceMap = false;
+              }
+            }
+          });
         }
-
-        if (moduleLoader.loader.includes('resolve-url-loader'))
-          moduleLoader.options.sourceMap = false;
       });
-    });
+      
+    }
 
     if (!isServer) {
       const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-      const { extendDefaultPlugins } = require('svgo');
 
       config.optimization.minimizer = config.optimization.minimizer.filter(
-        ({ constructor: { name } }) => name !== 'CssMinimizerPlugin',
+        ({ constructor: { name } }) => name !== 'CssMinimizerPlugin'
       );
 
       config.optimization.minimizer.push(
         new CssMinimizerPlugin({
           minimizerOptions: [{ preset: ['advanced', { discardUnused: false }] }, {}],
           minify: [CssMinimizerPlugin.cssnanoMinify, CssMinimizerPlugin.cssoMinify],
-        }),
+        })
       );
     }
 
